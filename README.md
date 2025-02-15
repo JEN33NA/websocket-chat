@@ -16,6 +16,6 @@ You may also see any lint errors in the console.
 
 
 ### `local setup
-For ui setup, execute npm run build on the terminal and copy the main.js and main.css in static classpath of resources
+For ui setup, execute npm run build on the terminal and copy the main.js and main.css in static classpath of resources. When backend spring boot application is started, it starts on port 8080 which will load UI build modules and setup websocket.
 
 
