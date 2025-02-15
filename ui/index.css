@@ -1,0 +1,463 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+
+/* Overall container to center the chat app */
+.chat-container {
+  width: 400px;
+  max-width: 100%;
+  margin: 50px auto;
+  padding: 20px;
+  border-radius: 8px;
+  background: #f9f9f9;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  font-family: Arial, sans-serif;
+}
+
+/* Header styles */
+h1 {
+  text-align: center;
+  color: #333;
+  font-size: 24px;
+  margin-bottom: 15px;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+
+/* Container for the message bubbles */
+.messages-container {
+  height: 300px;
+  overflow-y: auto;
+  margin-bottom: 20px;
+  padding: 15px;
+  border: 1px solid #ddd;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.05);
+}
+
+/* Style for each individual message */
+.message {
+  margin: 10px 0;
+  padding: 10px;
+  border-radius: 10px;
+  background-color: #e0f7fa;
+  position: relative;
+  max-width: 80%;
+  word-wrap: break-word;
+}
+
+/* Style for user messages */
+.message p {
+  margin: 0;
+  font-size: 14px;
+  color: #333;
+}
+
+/* Time indicator for each message */
+.message small {
+  position: absolute;
+  bottom: 5px;
+  right: 10px;
+  font-size: 10px;
+  color: #888;
+}
+
+/* Input container for sending messages */
+.input-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 0;
+}
+
+/* Input field style */
+.input-container input {
+  width: 80%;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 25px;
+  outline: none;
+  transition: all 0.3s ease-in-out;
+}
+
+/* Change input field border color on focus */
+.input-container input:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.3);
+}
+
+/* Send button style */
+.input-container button {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: #fff;
+  font-size: 16px;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+/* Send button hover effect */
+.input-container button:hover {
+  background-color: #0056b3;
+}
+
+/* Button focus state */
+.input-container button:focus {
+  outline: none;
+}
+
+/* Scrollbar for the messages container */
+.messages-container::-webkit-scrollbar {
+  width: 6px;
+}
+
+.messages-container::-webkit-scrollbar-thumb {
+  background-color: rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+}
+
+.messages-container::-webkit-scrollbar-track {
+  background: #f0f0f0;
+}
+
+/* Responsive design for mobile */
+@media (max-width: 480px) {
+  .chat-container {
+      width: 90%;
+      margin: 20px auto;
+  }
+
+  h1 {
+      font-size: 20px;
+  }
+
+  .input-container input {
+      font-size: 14px;
+      padding: 8px;
+  }
+
+  .input-container button {
+      font-size: 14px;
+      padding: 8px 15px;
+  }
+}
+
+
+/* Base colors */
+:root {
+  --primary-color: #3498db;  /* Blue */
+  --secondary-color: #2ecc71; /* Green */
+  --background-color: #f7f7f7; /* Light gray */
+  --message-background-color: #ecf0f1; /* Light gray for message bubbles */
+  --message-own-background-color: #3498db; /* Blue for own messages */
+  --message-text-color: #2c3e50; /* Dark text color */
+  --button-hover-color: #2980b9; /* Darker blue on button hover */
+  --input-border-color: #bdc3c7; /* Light border for input */
+  --input-focus-color: #3498db; /* Blue border on input focus */
+  --time-text-color: #7f8c8d; /* Light gray for time */
+}
+
+/* Overall container to center the chat app */
+.chat-container {
+  width: 400px;
+  max-width: 100%;
+  margin: 50px auto;
+  padding: 20px;
+  border-radius: 12px;
+  background: var(--background-color);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  font-family: 'Roboto', sans-serif;
+}
+
+/* Header styles */
+h1 {
+  text-align: center;
+  color: var(--primary-color);
+  font-size: 26px;
+  margin-bottom: 15px;
+  font-weight: bold;
+}
+
+/* Container for the message bubbles */
+.messages-container {
+  height: 300px;
+  overflow-y: auto;
+  margin-bottom: 20px;
+  padding: 15px;
+  border: 1px solid var(--input-border-color);
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.05);
+}
+
+/* Style for each individual message */
+.message {
+  margin: 10px 0;
+  padding: 12px;
+  border-radius: 15px;
+  background-color: var(--message-background-color);
+  position: relative;
+  max-width: 80%;
+  word-wrap: break-word;
+}
+
+/* Style for user messages */
+.message p {
+  margin: 0;
+  font-size: 14px;
+  color: var(--message-text-color);
+}
+
+/* Time indicator for each message */
+.message small {
+  position: absolute;
+  bottom: 5px;
+  right: 10px;
+  font-size: 10px;
+  color: var(--time-text-color);
+}
+
+/* Input container for sending messages */
+.input-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 0;
+}
+
+/* Input field style */
+.input-container input {
+  width: 80%;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid var(--input-border-color);
+  border-radius: 25px;
+  outline: none;
+  transition: all 0.3s ease-in-out;
+}
+
+/* Change input field border color on focus */
+.input-container input:focus {
+  border-color: var(--input-focus-color);
+  box-shadow: 0 0 5px rgba(52, 152, 219, 0.3);
+}
+
+/* Send button style */
+.input-container button {
+  padding: 10px 20px;
+  background-color: var(--primary-color);
+  color: #fff;
+  font-size: 16px;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+/* Send button hover effect */
+.input-container button:hover {
+  background-color: var(--button-hover-color);
+}
+
+/* Scrollbar for the messages container */
+.messages-container::-webkit-scrollbar {
+  width: 6px;
+}
+
+.messages-container::-webkit-scrollbar-thumb {
+  background-color: rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+}
+
+.messages-container::-webkit-scrollbar-track {
+  background: #f0f0f0;
+}
+
+/* Responsive design for mobile */
+@media (max-width: 480px) {
+  .chat-container {
+      width: 90%;
+      margin: 20px auto;
+  }
+
+  h1 {
+      font-size: 20px;
+  }
+
+  .input-container input {
+      font-size: 14px;
+      padding: 8px;
+  }
+
+  .input-container button {
+      font-size: 14px;
+      padding: 8px 15px;
+  }
+}
+
+/* Base colors */
+:root {
+  --primary-color: #3498db;  /* Soft Blue */
+  --secondary-color: #2ecc71; /* Soft Green */
+  --background-color: #f0f4f8; /* Light Grayish Blue for overall background */
+  --message-background-color: #f8f9fa; /* Light gray for message bubbles */
+  --message-own-background-color: #a29bfe; /* Soft purple for user's messages */
+  --message-text-color: #2c3e50; /* Dark text for messages */
+  --button-hover-color: #2980b9; /* Darker blue on button hover */
+  --input-border-color: #b0bec5; /* Soft gray border for input */
+  --input-focus-color: #3498db; /* Soft blue border on input focus */
+  --time-text-color: #7f8c8d; /* Mild gray for message timestamps */
+}
+
+/* Overall container to center the chat app */
+.chat-container {
+  width: 400px;
+  max-width: 100%;
+  margin: 50px auto;
+  padding: 20px;
+  border-radius: 12px;
+  background: var(--background-color);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  font-family: 'Roboto', sans-serif;
+}
+
+/* Header styles */
+h1 {
+  text-align: center;
+  color: var(--primary-color);
+  font-size: 26px;
+  margin-bottom: 15px;
+  font-weight: bold;
+}
+
+/* Container for the message bubbles */
+.messages-container {
+  height: 300px;
+  overflow-y: auto;
+  margin-bottom: 20px;
+  padding: 15px;
+  border: 1px solid var(--input-border-color);
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.05);
+}
+
+/* Style for each individual message */
+.message {
+  margin: 10px 0;
+  padding: 12px;
+  border-radius: 15px;
+  background-color: var(--message-background-color);
+  position: relative;
+  max-width: 80%;
+  word-wrap: break-word;
+}
+
+/* Style for user messages */
+.message p {
+  margin: 0;
+  font-size: 14px;
+  color: var(--message-text-color);
+}
+
+/* Time indicator for each message */
+.message small {
+  position: absolute;
+  bottom: 5px;
+  right: 10px;
+  font-size: 10px;
+  color: var(--time-text-color);
+}
+
+/* Input container for sending messages */
+.input-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 0;
+}
+
+/* Input field style */
+.input-container input {
+  width: 80%;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid var(--input-border-color);
+  border-radius: 25px;
+  outline: none;
+  transition: all 0.3s ease-in-out;
+}
+
+/* Change input field border color on focus */
+.input-container input:focus {
+  border-color: var(--input-focus-color);
+  box-shadow: 0 0 5px rgba(52, 152, 219, 0.3);
+}
+
+/* Send button style */
+.input-container button {
+  padding: 10px 20px;
+  background-color: var(--primary-color);
+  color: #fff;
+  font-size: 16px;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+/* Send button hover effect */
+.input-container button:hover {
+  background-color: var(--button-hover-color);
+}
+
+/* Scrollbar for the messages container */
+.messages-container::-webkit-scrollbar {
+  width: 6px;
+}
+
+.messages-container::-webkit-scrollbar-thumb {
+  background-color: rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+}
+
+.messages-container::-webkit-scrollbar-track {
+  background: #f0f0f0;
+}
+
+/* Responsive design for mobile */
+@media (max-width: 480px) {
+  .chat-container {
+      width: 90%;
+      margin: 20px auto;
+  }
+
+  h1 {
+      font-size: 20px;
+  }
+
+  .input-container input {
+      font-size: 14px;
+      padding: 8px;
+  }
+
+  .input-container button {
+      font-size: 14px;
+      padding: 8px 15px;
+  }
+}
